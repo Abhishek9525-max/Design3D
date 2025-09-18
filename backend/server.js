@@ -2,6 +2,7 @@ const express = require("express");
 const mongoose = require("mongoose");
 const cors = require("cors");
 require("dotenv").config();
+const connectDB = require('./config/db')
 // Routes
 const productRoutes = require("./routes/productRoutes");
 const authRoutes = require("./routes/authRoutes");
@@ -12,10 +13,7 @@ app.use(cors());
 app.use(express.json());
 
 // MongoDB connection
-mongoose
-  .connect(process.env.MONGO_URI)
-  .then(() => console.log("MongoDB connected"))
-  .catch((err) => console.log("Mongo error:", err));
+connectDB();
 
   app.get("/", (req, res) => {
   res.send("WELCOME TO Design3d API");
