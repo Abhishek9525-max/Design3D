@@ -17,9 +17,15 @@ mongoose
   .then(() => console.log("MongoDB connected"))
   .catch((err) => console.log("Mongo error:", err));
 
+  app.get("/", (req, res) => {
+  res.send("WELCOME TO Design3d API");
+});
+
 
 app.use("/api/products", productRoutes);
 app.use("/api/auth", authRoutes);
+
+
 
 
 app.all('/*splat',(req,res,next)=>{
